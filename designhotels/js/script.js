@@ -15,7 +15,6 @@
 //   mobileMenuBar.stop().animate({left:0},500);
 // }})
 
-// 지호님
 const appBtn = document.querySelector(".header-appbar-wrap");
 const mopbileMenuBar = document.querySelector("#header");
 const mobileMenu = document.querySelector(".mobile-menu");
