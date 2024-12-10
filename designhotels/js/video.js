@@ -83,3 +83,35 @@ document.addEventListener("keypress", function(e){
     }
   }
 })
+
+//비디오 다시보기 버튼
+let setId = setInterval(()=>{
+  if(mainVideo.ended){
+    videoPlay = "off";
+    document.querySelector(".m-again").style.display = "block";
+    document.querySelector(".pauseIcon i").className = "fas fa-pause";
+    clearInterval(setId);
+  }
+},100)
+
+//비디오 리플레이
+document.querySelector(".m-again").addEventListener("click", function(){
+  mainVideo.play();
+  document.querySelector(".pauseIcon i").className = "fas fa-pause";
+  videoPlay = "on";
+  this.style.display = "none";
+})
+
+//비디오 끝난 후 스크롤 이동
+let nextTop = document.querySelector("#section2").offsetTop - 80;
+document.querySelector(".nextIcon").addEventListener("click", ()=>{
+  window.scrollTo({top: nextTop, behavior:"smooth"}); 
+})
+
+
+
+
+
+
+
+

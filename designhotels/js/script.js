@@ -16,7 +16,7 @@
 // }})
 
 const appBtn = document.querySelector(".header-appbar-wrap");
-const mopbileMenuBar = document.querySelector("#header");
+const mobileMenuBar = document.querySelector("#header");
 const mobileMenu = document.querySelector(".mobile-menu");
 const closeBtn = document.querySelector(".appbarCloseBtn");
 
@@ -27,7 +27,7 @@ appBtn.addEventListener("click", () => {
     easing: "ease-in-out",
     fill: "forwards",
   });
-  mopbileMenuBar.style.left = "100%";
+  mobileMenuBar.style.left = "100%";
 });
 
 closeBtn.addEventListener("click", () => {
@@ -39,7 +39,17 @@ closeBtn.addEventListener("click", () => {
   animation.finished.then(()=>{
     mobileMenu.style.display = "none";
   })
+  mobileMenuBar.style.left = "0%";
 });
 
-
+//section3 이미지 마우스
+const trandingWrap = document.querySelector(".tranding-wrap");
+let trandingOffset = trandingWrap.getBoundingClientRect().left;
+trandingWrap.addEventListener("mousemove", (e)=>{
+  if(e.pageX >= window.innerWidth - 100){
+    return false;
+  } else{
+    trandingWrap.style.left = -(e.pageX - trandingOffset) + "px";
+  }
+})
 

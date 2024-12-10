@@ -1,0 +1,98 @@
+[
+  {
+    "video": "img/videoBg01.jpg",
+    "title": "The Ride",
+    "category":"beach",
+    "description": "Istoria, Santorini, Greece"
+  },
+  {
+      "video": "video/v1.mp4",
+      "title": "The manhunt",
+      "category":"city",
+      "description": "Istoria, Santorini, Greece"
+  },
+  {
+      "video": "video/v2.mp4",
+      "title": "The primary",
+      "category":"beach",
+      "description": "Istoria, Santorini, Greece"
+  },
+  {
+      "video": "video/v3.mp4",
+      "title": "The digging",
+      "category":"mountain",
+      "description": "Istoria, Santorini, Greece"
+  },
+  {
+      "video": "video/v4.mp4",
+      "title": "The because",
+      "category":"city",
+      "description": "Istoria, Santorini, Greece"
+  },
+  {
+      "video": "video/v5.mp4",
+      "title": "The bleakly",
+      "category":"mountain",
+      "description": "Istoria, Santorini, Greece"
+  },
+  {
+      "video": "video/v6.mp4",
+      "title": "The needily",
+      "category":"mountain",
+      "description": "Istoria, Santorini, Greece"
+  },
+  {
+      "video": "video/v7.jpg",
+      "title": "The whether",
+      "category":"mountain",
+      "description": "Istoria, Santorini, Greece"
+  },
+  {
+      "video": "video/v8.mp4",
+      "title": "The envious",
+      "category":"beach",
+      "description": "Istoria, Santorini, Greece"
+  },
+  {
+      "video": "video/v9.mp4",
+      "title": "The huzzah",
+      "category":"city",
+      "description": "Istoria, Santorini, Greece"
+  },
+  {
+      "video": "video/v10.mp4",
+      "title": "The outline",
+      "category":"beach",
+      "description": "Istoria, Santorini, Greece"
+  },
+  {
+      "video": "video/v11.mp4",
+      "title": "The yippee",
+      "category":"mountain",
+      "description": "Istoria, Santorini, Greece"
+  },
+  {
+      "video": "video/v12.mp4",
+      "title": "The student",
+      "category":"city",
+      "description": "Istoria, Santorini, Greece"
+  },
+  {
+      "video": "video/v1.mp4",
+      "title": "The reunify",
+      "category":"mountain",
+      "description": "Istoria, Santorini, Greece"
+  },
+  {
+      "video": "./video/v2.mp4",
+      "title": "The bolster",
+      "category":"beach",
+      "description": "Istoria, Santorini, Greece"
+  },
+  {
+    "video": "./video/v3.mp4",
+    "title": "The Ride",
+    "category":"beach",
+    "description": "Istoria, Santorini, Greece"
+  }
+]
