@@ -1,0 +1,11 @@
+nav { background-color:#fafafa; }
+nav .logo { color:#b99ebe; }
+nav ul { height:80px; display:flex; align-items:center; }
+nav ul > li { margin-right:24px; font-weight:400; position:relative; }
+nav ul > li:first-child span { font-weight:400; color:#b99ebe; }
+nav ul ul { height:auto; padding:16px 20px; text-align:left; background-color:#fff; position:absolute; top:36px; box-shadow:0 8px 16px rgba(0,0,0,.05); white-space:nowrap; flex-direction:column; opacity:0; visibility:hidden; }
+nav ul:hover li ul { opacity:1; visibility:visible; transition:.35s ease; }
+nav ul ul li { width:100%; margin:0; font-size:14px; font-weight:400; }
+nav ul ul li + li { margin-top:6px; }
+nav ul ul li a:hover { color:#b99ebe; text-decoration:underline; }
+

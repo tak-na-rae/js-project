@@ -1,0 +1,16 @@
+.p-detail .layout-fix { padding:80px 20px; }
+
+.msg-discount { padding:16px 24px; margin-bottom:32px; background-color:#fff; font-weight:500; color:#222; border:1px solid #eee; }
+
+.p-detail .flex-info { display:flex; }
+.p-detail .col img { width:100%; }
+.p-detail .row { max-width:460px; padding-left:40px; font-weight:400; }
+.p-detail .row .cate { font-size:14px; color:#999; }
+.p-detail .row .name { margin:8px 0 6px; font-size:18px; }
+.p-detail .row .desc { line-height:1.46; font-size:14px; word-break:keep-all; }
+.p-detail .row .price { margin:32px 0 40px; font-size:20px; font-weight:500; }
+/* .p-detail .row button { width:100%; line-height:50px; background-color:#240c3c; font-size:15px; color:#fff; border:0; cursor:pointer; }*/
+
+.p-detail .btn-primary { display:flex; gap:8px; }
+.p-detail .btn-primary .PurpleBtn { min-width:80px; padding-top:10px; text-align:center; background-color:#fff; border:1px solid #ddd; }
+.p-detail .btn-primary .PurpleBtn img { width:28px; }

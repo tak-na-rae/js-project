@@ -1,0 +1,9 @@
+.p-cart { padding:80px 0 100px; }
+.tb-cart { width:100%; border-top:1px solid #eee; border-collapse:collapse; }
+.tb-cart thead th { height:60px; text-align:left; background-color:#fff; font-size:14px; color:#222; border-bottom:1px solid #eee; }
+.tb-cart tbody td { padding:32px 16px 32px 0; font-size:15px; border-bottom:1px solid #eee; }
+
+
+/*  */
+.tb-cart thead th { text-align:center; }
+.tb-cart tbody td { padding:32px 16px 32px; text-align:center; }

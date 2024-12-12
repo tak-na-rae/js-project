@@ -1,0 +1,57 @@
+body {
+  padding: 0;
+}
+.p-shop .main-bg {
+  height: 600px;
+  /* background:transparent url(./img/prd_bg.jpg)no-repeat center/cover; */
+}
+
+.p-shop .heading {
+  margin: 80px auto 40px;
+  text-align: center;
+}
+
+.p-shop .heading p {
+  margin-bottom: 4px;
+  font-size: 14px;
+  color: #666;
+}
+
+.p-shop .heading h2 {
+  font-size: 26px;
+  font-weight: 400;
+}
+
+.p-shop .row {
+  width: 1280px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.p-shop .row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.p-shop .row > .col {
+  width: 33.333%;
+}
+
+.p-shop .col img {
+  width: 100%;
+  margin-bottom: 8px;
+}
+.p-shop .col h4 {
+  margin-top: 8px;
+  font-size: 15px;
+  color: #222;
+  letter-spacing: -0.75px;
+}
+.p-shop .col h4.cate {
+  color: #666;
+  font-size: 13px;
+}
+.p-shop .col h4.price {
+  margin-bottom: 40px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
