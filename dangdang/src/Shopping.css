@@ -55,3 +55,102 @@ body {
   font-weight: 600;
   letter-spacing: 0;
 }
+
+.p-shop .today {
+  padding-bottom:80px;
+}
+
+.p-shop .swiper-slide {
+  border:1px solid #eee;
+}
+
+.p-shop .swiper-slide img {
+  width:100%;
+  display: block;
+}
+
+.p-shop .swiper-pagination {
+  margin-top: 24px;
+  position: relative;
+}
+
+.p-shop .swiper-button-prev,
+.p-shop .swiper-button-next {
+  margin-top:-48px;
+  color:#222 !important;
+}
+
+.p-shop .swiper-pager span {
+  width:40px;
+  height:40px;
+  background-color:red;
+  display:inline-block;
+}
+.p-shop .swiper-pager .swiper-prev {}
+.p-shop .swiper-pager .swiper-next {}
+
+.p-shop .swiper-pagination-bullet {
+  background-color:#240c3c !important;
+}
+
+footer {
+  padding:32px 0;
+  background-color:#240c3c;
+  color: #b99ebe;
+  border-top:1px solid #eee;
+}
+
+footer ul {
+  display:flex;
+}
+
+footer .info {
+  display:flex;
+  justify-content: space-between;
+}
+
+footer .info .customer p {
+  font-size:20px;
+  letter-spacing:0;
+}
+footer .info .customer span {
+  margin-top:2px;
+  margin-bottom:12px;
+  font-size:14px;
+  display: block;
+}
+
+footer .info .customer a {
+  padding:6px 12px 8px;
+  margin-right:10px;
+  background-color:#b99ebe;
+  font-size:13px;
+  color:#fff;
+  display:inline-block;
+}
+
+footer .info .sns {
+  font-size:13px;
+}
+
+footer .info .sns li {
+  margin-left:12px;
+}
+
+footer .link {
+  margin-top:60px;
+}
+
+footer .link li {
+  text-align:center;
+  margin-right:16px;
+}
+
+footer .link li a {
+  font-size:13px;
+  display:block;
+}
+
+footer li a:hover {
+  color:#fff;
+}

@@ -4,7 +4,8 @@ import bg from '../img/prd_bg.jpg';
 
 import data from "../data.js";
 import Card from '../Card.jsx';
-
+import Today from '../components/Today.jsx';
+import Footer from '../components/Footer.jsx';
 
 
 const Main = () => {
@@ -57,7 +58,19 @@ const Main = () => {
                 </div> */}
               </div>
             </div>
+            <div className="item-cont">
+              <div className="today">
+                <div className="layout-fix">
+                  <div className="heading">
+                    <p>안녕!</p>
+                    <h2>WEEKLY NEW</h2>
+                  </div>
+                  <Today/>
+                </div>
+              </div>
+            </div>
           </main>
+          <Footer/>
         </div>
 
     </>
