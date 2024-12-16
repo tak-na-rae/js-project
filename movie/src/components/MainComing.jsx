@@ -1,3 +1,4 @@
+// 메인 비주얼(upcoming)
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 
@@ -37,7 +38,7 @@ const MainComing = () => {
       /movie/now_playing : 현재 상영작을 불러온다.
       /trending/{movie}/{time_window} : 일별, 주차별 인기작을 불러온다.
       /search/movie : 영화 검색 결과를 불러온다. */}
-      <div className="upComing">
+      <div className="section-visual">
         { isLoading ? (<p className="loding">로딩중</p>) : (
         <div className="upMovie">
           <div className="upComingImg">

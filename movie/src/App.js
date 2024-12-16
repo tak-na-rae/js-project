@@ -6,9 +6,13 @@ import Footer from './components/Footer';
 
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home.jsx";
-import Movies from "./pages/Movies.jsx";
+import Movies from "./pages/Movies.jsx";                                      
 import Event from "./pages/Event.jsx";
 import Users from "./pages/Users.jsx";
+
+import MovieDetail from "./pages/MovieDetail.jsx";
+import UpComing from "./components/UpComing.jsx";
+import Coming from "./pages/Coming.jsx";
 
 
 function App() {
@@ -20,6 +24,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/movies" element={<Movies/>}/>
+            <Route path="/movies/:id" element={<MovieDetail/>}/>
+            <Route path="/coming/:id" element={<Coming/>}/>
             <Route path="/event" element={<Event/>}/>
             <Route path="/users" element={<Users/>}/>
           </Routes>

@@ -3,7 +3,11 @@ import React from 'react';
 const Search = () => {
   return (
     <>
-      Search Page
+    <div className="movSearch">
+      <div className="layout-fix">
+        Search Page(Search.jsx)
+      </div>
+    </div>
     </>
   );
 };
