@@ -5,7 +5,7 @@ import { RiMovie2Fill } from "react-icons/ri";
 
 const Nav = () => {
   const activeStyle = {
-    color: '#3e44ff',
+    color: '#ff3e3e',
   };
   return (
     <>

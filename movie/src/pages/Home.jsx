@@ -40,7 +40,7 @@ const Home = () => {
       <div className="home">
         <MainComing/>
         <Search/>
-        <div className="movNow">
+        <section className="movNow">
           <div className="layout-fix">
           { isLoading ? (<p className="loding">로딩중</p>) : (
                 <>
@@ -78,7 +78,7 @@ const Home = () => {
                 </>
               ) }
           </div>
-        </div>
+        </section>
         <UpComing/>
       </div>
     </>

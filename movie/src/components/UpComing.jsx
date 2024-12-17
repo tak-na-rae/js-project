@@ -6,7 +6,7 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -35,7 +35,7 @@ const UpComing = () => {
   return (
     <>
       {/* main - UpComing section */}
-      <div className="movComing">
+      <section className="movComing">
         <div className="layout-fix">
           {/* <ul className="coming-list">
             { isLoading ? (<p className="loding">로딩중</p>) : (
@@ -58,10 +58,14 @@ const UpComing = () => {
             <>
               <h2>개봉 예정작</h2>
               <Swiper className="coming-list"
-                  modules={[Navigation, Pagination]}
+                  modules={[Autoplay, Navigation, Pagination]}
                   slidesPerView={3}
                   spaceBetween={20} 
                   grabCursor={true}
+                  autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false,
+                  }}
                   navigation={true}
                   pagination={{ clickable: true }}>
                     {nextMov.map((el,idx) => (
@@ -80,7 +84,7 @@ const UpComing = () => {
 
 
         </div>
-      </div>
+      </section>
     </>
   );
 };

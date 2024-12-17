@@ -13,6 +13,7 @@ import Users from "./pages/Users.jsx";
 import MovieDetail from "./pages/MovieDetail.jsx";
 import UpComing from "./components/UpComing.jsx";
 import Coming from "./pages/Coming.jsx";
+import SearchDetail from "./pages/SearchDetail.jsx";
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
             <Route path="/coming/:id" element={<Coming/>}/>
             <Route path="/event" element={<Event/>}/>
             <Route path="/users" element={<Users/>}/>
+            <Route path="/search/:movieId" element={<SearchDetail/>}/>
           </Routes>
         </main>
         <Footer/>
