@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './App.css';
 // import './index.css';
-// import App from './App';
+import App from './App';
 
 // import Library from './chapter01/Library';
 import Shopping from './Shopping';
@@ -15,7 +15,7 @@ import Store from './Store';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
-    {/* <App /> */}
+    <App/>
     {/* <Library/> */}
 
     <Provider store={Store}> {/* Provider는 상위에 있어야함 */}

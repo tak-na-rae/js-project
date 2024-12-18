@@ -72,7 +72,7 @@ function App() {
        </div>
 
         {
-          post.map(function(el,idx,arr){ return(
+          post.map(function(el,idx){ return(
             <div className="list" key={idx}> {/* 반복해서 생성되는 태그한테는 key값 필요 */}
               <h4 onClick={ ()=>{setModal(!modal)} }
               style={{color:"#222", fontSize:"18px", fontWeight:"400"}}>{idx + 1} {el} {/* {el} 또는 {post[idx]} 사용가능 */}

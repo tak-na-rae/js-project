@@ -38,7 +38,7 @@ const UpComing = () => {
       <section className="movComing">
         <div className="layout-fix">
           {/* <ul className="coming-list">
-            { isLoading ? (<p className="loding">로딩중</p>) : (
+            { isLoading ? (<p className="loading">로딩중</p>) : (
               <>
                 {nextMov.map((el,idx) => (
                   <li key={idx}>
@@ -54,7 +54,7 @@ const UpComing = () => {
             )}
           </ul> */}
 
-          { isLoading ? (<p className="loding">로딩중</p>) : (
+          { isLoading ? (<p className="loading">로딩중</p>) : (
             <>
               <h2>개봉 예정작</h2>
               <Swiper className="coming-list"

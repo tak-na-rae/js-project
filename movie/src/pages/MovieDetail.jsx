@@ -21,7 +21,7 @@ const Movies = () => {
   return (
     <>
       {/* MoviesDetail Page */}
-      {isLoading ? (<p className="loding">로딩중</p>) : (
+      {isLoading ? (<p className="loading">로딩중</p>) : (
         <>
           <div className="movDetail">
             <img src={`https://image.tmdb.org/t/p/w1280/${mov.backdrop_path}`} alt={`${mov.title}`}/>

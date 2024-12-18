@@ -42,7 +42,7 @@ const Home = () => {
         <Search/>
         <section className="movNow">
           <div className="layout-fix">
-          { isLoading ? (<p className="loding">로딩중</p>) : (
+          { isLoading ? (<p className="loading">로딩중</p>) : (
                 <>
                   <h2>현재 상영작</h2>
                   <div className="now">

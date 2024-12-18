@@ -15,6 +15,10 @@ import UpComing from "./components/UpComing.jsx";
 import Coming from "./pages/Coming.jsx";
 import SearchDetail from "./pages/SearchDetail.jsx";
 
+import BtnPageTop from "./components/BtnPageTop.jsx";
+
+import UserDetail from "./components/UserDetail.jsx";
+
 
 function App() {
   return (
@@ -29,10 +33,12 @@ function App() {
             <Route path="/coming/:id" element={<Coming/>}/>
             <Route path="/event" element={<Event/>}/>
             <Route path="/users" element={<Users/>}/>
+            <Route path="/users:id" element={<UserDetail/>}/>
             <Route path="/search/:movieId" element={<SearchDetail/>}/>
           </Routes>
         </main>
         <Footer/>
+        <BtnPageTop/>
       </div>
     </>
   );

@@ -39,7 +39,7 @@ const MainComing = () => {
       /trending/{movie}/{time_window} : 일별, 주차별 인기작을 불러온다.
       /search/movie : 영화 검색 결과를 불러온다. */}
       <section className="section-visual">
-        { isLoading ? (<p className="loding">로딩중</p>) : (
+        { isLoading ? (<p className="loading">로딩중</p>) : (
         <div className="upMovie">
           <div className="upComingImg">
             <img src={`https://image.tmdb.org/t/p/w500/${randomMovie.backdrop_path}`} alt={randomMovie.title}/>
