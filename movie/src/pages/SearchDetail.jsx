@@ -5,6 +5,8 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const SearchDetail = () => {
+  const APIKEY = process.env.REACT_APP_API_KEY;
+
   const {movieId} = useParams(); //(App.js) <Route path="/search/:movieId" element={<SearchDetail/>}/>
   const [detailInfo,setDetailInfo] = useState({}); //선택영화 상세정보
   const [actors,setActors] = useState([]); //출연배우정보
@@ -13,7 +15,7 @@ const SearchDetail = () => {
   
   const fetchMovDetail = async ()=>{
     try { 
-      const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=546c72b99cf64514c2c03c7ef473011b&language=ko`); //async 쓰면 무조건 await
+      const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${APIKEY}&language=ko`); //async 쓰면 무조건 await
       setDetailInfo(response.data);
       console.log("setDetailInfo", response, {movieId});
     } catch(err) {
@@ -21,7 +23,7 @@ const SearchDetail = () => {
     }
 
     try { 
-      const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=546c72b99cf64514c2c03c7ef473011b&language=ko`);
+      const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${APIKEY}&language=ko`);
       setActors(response.data.cast);
       console.log("/credits?", response.data.cast);
     } catch(err) {

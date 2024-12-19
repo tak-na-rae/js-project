@@ -60,7 +60,7 @@ const Users = () => {
           <span className="idx">{clickInfo.id}</span>
           <table>
             <tbody>
-              <tr>
+              <tr>s
                 <th>Name</th>
                 <td>{clickInfo.name}</td>
               </tr>

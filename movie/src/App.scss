@@ -217,7 +217,8 @@ main {
   .p-users {
     .user-list { margin-left:-20px; display:flex; flex-wrap:wrap;
       > li { width:33.333%; padding-bottom:20px; padding-left:20px;
-        .list-cont { padding:24px 32px; border:1px solid #eee; border-radius:2px; display:block; cursor:pointer;
+        @media(max-width:767px){ width:50%; }
+        .list-cont { height:100%; padding:24px 32px; border:1px solid #eee; border-radius:2px; display:block; cursor:pointer;
           &:hover { border:1px solid #ff3e3e; transition:.25s ease; }
           &:hover .idx { background-color:#ff3e3e; transition:.25s ease; }
           &:hover .name { color:#ff3e3e; transition:.25s ease; }
@@ -230,7 +231,16 @@ main {
       &:hover { transform:rotate(180deg); transition:.35s ease; }
       }
       .user-info { min-width:500px; max-width:1280px; padding:40px; background-color:#fff; word-break:break-word;
-        th { min-width:70px; height:30px; padding-right:16px; text-align:left; color:#444; }
+        @media(max-width:767px){ width:calc(100vw - 40px); min-width:280px; padding:36px 24px 24px; }
+        tr {
+        @media(max-width:767px){ display:flex; flex-direction:column; }
+        }
+        th { min-width:70px; height:30px; padding-right:16px; text-align:left; color:#444;
+        @media(max-width:767px){ height:auto; }
+        }
+        td {
+        @media(max-width:767px){ padding-top:4px; padding-bottom:12px; }
+        }
       }
     }
   }

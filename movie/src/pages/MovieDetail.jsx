@@ -5,13 +5,15 @@ import { useState, useEffect } from "react";
 import axios from 'axios';
 
 const Movies = () => {
+  const APIKEY = process.env.REACT_APP_API_KEY;
+
   //<Route path="/movies/:id" element={<MovieDetail/>}/> 에서
   // :id면 const {id} 로 불러와야함 :a면 {a}
   const { id } = useParams();
   const [isLoading,setIsLoading] = useState(true);
   const [mov, setMov] = useState(null);
   useEffect(()=>{
-    axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=546c72b99cf64514c2c03c7ef473011b&language=ko`)
+    axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${APIKEY}&language=ko`)
     .then(res => {
       console.log("MovieDetail.jsx==", res);
       setMov(res.data);

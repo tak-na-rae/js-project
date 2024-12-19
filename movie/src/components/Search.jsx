@@ -9,6 +9,8 @@ import { Link } from "react-router-dom";
 import SearchDetail from '../pages/SearchDetail';
 
 const Search = () => {
+  const APIKEY = process.env.REACT_APP_API_KEY;
+  
   const [searchWord,setSearchWord] = useState(""); //inputValue
 
   const [movies,setMovies] = useState([]);
@@ -17,7 +19,7 @@ const Search = () => {
     // export const API_URL = 'https://api.themoviedb.org/3/';
     // export const IMAGE_BASE_URL = 'http://image.tmdb.org/t/p/';
     
-    axios.get(`https://api.themoviedb.org/3/search/movie?api_key=546c72b99cf64514c2c03c7ef473011b&language=ko&page=1&include_adult=false&query=${searchWord}`)
+    axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${APIKEY}&language=ko&page=1&include_adult=false&query=${searchWord}`)
     .then((res)=>{ 
       setMovies(res.data.results);
       console.log("UpComing.jsx==", res);           
@@ -42,7 +44,7 @@ const Search = () => {
 
 
     // setDetailInfo({  })
-    // axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=546c72b99cf64514c2c03c7ef473011b&language=ko`)
+    // axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${APIKEY}&language=ko`)
     // .then((res)=>{
     //   console.log("const showDetail", res, {movieId});
     //   setDetailInfo(movieId.data); //여기는 data안에 results 없음
@@ -50,7 +52,7 @@ const Search = () => {
     // .catch((err)=>{ console.log("(1)Search.jsx==", err) })
 
 
-    // axios.get(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=546c72b99cf64514c2c03c7ef473011b&language=ko`)
+    // axios.get(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${APIKEY}&language=ko`)
     // .then((res)=>{ console.log("/credits?", res.data.cast); })
     // .catch((err)=>{ console.log("(2)Search.jsx==", err) })
 

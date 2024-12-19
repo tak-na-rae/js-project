@@ -13,11 +13,13 @@ import 'swiper/css/pagination';
 
 
 const UpComing = () => {
+  const APIKEY = process.env.REACT_APP_API_KEY;
+
   const [nextMov,setNextMov] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const getMovies = async()=>{
     try{
-      const response = await axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=546c72b99cf64514c2c03c7ef473011b&language=ko`);
+      const response = await axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${APIKEY}&language=ko`);
       setNextMov(response.data.results);
       // setAppMov(response.data.results.slice(0, 8));
       console.log("UpComing.jsx==", response);                                                                                                                                                                          

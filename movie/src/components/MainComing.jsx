@@ -3,11 +3,13 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 
 const MainComing = () => {
+  const APIKEY = process.env.REACT_APP_API_KEY;
+
   const [upComingMov,setUpComingMov] = useState([]);
   const [isLoading,setIsLoading] = useState(true);
   const getMovies = async()=>{
     try{
-      const response = await axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=546c72b99cf64514c2c03c7ef473011b&language=ko`);
+      const response = await axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${APIKEY}&language=ko`);
       setUpComingMov(response.data.results);
       // console.log("MainComing.jsx==", response);
 
@@ -30,7 +32,6 @@ const MainComing = () => {
 
   return (
     <>
-      {/* 546c72b99cf64514c2c03c7ef473011b */}
       {/* discover/movie : 장르별, 평점별, 추천 수 별 영화들을 불러온다.
       /movie/{movie_id}/credits : 영화 출연진, 감독, 스태프 등을 불러온다.
       /movie/{movie_id} : 영화 상세정보를 불러온다.
