@@ -1,28 +1,34 @@
-import React from 'react';
 
 
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+
+import { DataContext } from '../App';
 
 
 const RecipeDetail = () => {
   const APIKEY = process.env.REACT_APP_API_KEY;
-
+  
   const {id} = useParams();
-  const [menu,setMenu] = useState([]); //([]) **중요
+  const [menu,setMenu] = useState({}); //({})([]) **중요
   const [loading,setLoading] = useState(true);
 
+  //+++상세페이지 카테고리 매치
+  const { setCheckCate } = useContext(DataContext);
+  
   useEffect(()=>{
-    axios.get(`https://openapi.foodsafetykorea.go.kr/api/${APIKEY}/COOKRCP01/json/1/20`)
+    axios.get(`https://openapi.foodsafetykorea.go.kr/api/${APIKEY}/COOKRCP01/json/1/100`)
     .then((res)=>{
-      const foundMenu = res.data.COOKRCP01.row.find(el => String(el.RCP_SEQ) === String(id));
-      console.log("foundMenu==",foundMenu);
-      setMenu(foundMenu);
-      setLoading(false);
-    })
-    .catch((err)=>{ console.log(err) })
-  },[]);
+        const foundMenu = res.data.COOKRCP01.row.find(el => String(el.RCP_SEQ) === String(id));
+        console.log("foundMenu==",foundMenu);
+        setCheckCate(foundMenu.RCP_PAT2); //+++RCP_PAT2 값 전달
+        setMenu(foundMenu || alert("error!"));
+        setLoading(false);
+      })
+      .catch((err)=>{ console.log(err); })
+    },[id]);
+
   return (
     <>
       <div className="p-detail">
@@ -53,7 +59,7 @@ const RecipeDetail = () => {
                     {menu.INFO_FAT && <li>지방 <b>{menu.INFO_FAT}</b></li>}
                     {menu.INFO_NA && <li>나트륨 <b>{menu.INFO_NA}</b></li>}
                   </ul>
-                  <div className="parts">{menu.RCP_PARTS_DTLS}</div>
+                  <div className="parts">{menu.RCP_PARTS_DTLS ? menu.RCP_PARTS_DTLS.replace(/●/g, "") : null}</div>
                   <ul className="idx-list">
                     {Object.keys(menu)
                       .filter((key)=> key.startsWith("MANUAL") && !key.startsWith("MANUAL_IMG") && menu[key])
