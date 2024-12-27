@@ -54,7 +54,8 @@ const MainSlider = () => {
          modules={[Navigation, Pagination, Autoplay]}
          spaceBetween={0}
          slidesPerView={1}
-         speed={1500}
+         touchRatio={0}
+         speed={1000}
          autoplay={
             {
                delay: 3000,
@@ -83,7 +84,8 @@ const MainSlider = () => {
             <Swiper
             modules={[Navigation, Pagination, Autoplay]}
             spaceBetween={30}
-            speed={1500}
+            speed={1000}
+            touchRatio={0}
             slidesPerView={'auto'}
             autoplay={
                {

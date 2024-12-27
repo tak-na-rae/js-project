@@ -1,6 +1,10 @@
 import React from 'react';
-import MainSlider from '../components/MainSlider';
 import MainSliderControls from '../components/MainSliderControls';
+
+import MainSlider from '../components/MainSlider';
+import BestItem from '../components/BestItem';
+import NewItem from '../components/NewItem';
+
 
 
 const Home = () => {
@@ -8,6 +12,8 @@ const Home = () => {
     <>
       <main className="main">
         <MainSlider/>
+        <BestItem/>
+        <NewItem/>
       </main>
     </>
   );

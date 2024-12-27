@@ -4,20 +4,24 @@ import { RiMenu3Fill } from "react-icons/ri";
 import { MdOutlineClose } from "react-icons/md";
 import $ from 'jquery';
 
+import { LuDog } from "react-icons/lu";
+
 const Nav = () => {
   const [menuOpen, setMenuOpen]=useState(true);
   const activeStyle={
-    color:'cadetblue'
+    color:'#31caae'
   }
   const toggleMenu = () =>{
     setMenuOpen(prevMenuOpen => !prevMenuOpen);
-    $('.mobile-header-drop').slideToggle(500);
+    // $('.mobile-header-drop').slideToggle(500);
+    $('.mobile-header-drop').toggleClass("open");
   }
   return (
     <div className='header'>
         <div className="layout-fix">
           <div className="logo">
-            <Link to="/"><img src={process.env.PUBLIC_URL + "/img/logo.png"} alt="" /></Link>
+            {/* <Link to="/"><img src={process.env.PUBLIC_URL + "/img/logo.png"} alt="" /></Link> */}
+            <Link to="/"><LuDog/></Link>
           </div>
           <div className="nav">
             <ul className='loginAndsignup'>
@@ -30,12 +34,8 @@ const Nav = () => {
             </ul>
           </div>
           <div className="movieNav">
-            <span>
-              {
-                menuOpen ? (<RiMenu3Fill onClick={toggleMenu} />) : (<MdOutlineClose onClick={toggleMenu} />)
-              }
-              
-
+            <span className="icon">
+              { menuOpen ? (<RiMenu3Fill onClick={toggleMenu} />) : (<MdOutlineClose onClick={toggleMenu} />) }
             </span>
             <div className={`mobile-header-drop ${menuOpen ? '':'open'}`}>
               <div>
