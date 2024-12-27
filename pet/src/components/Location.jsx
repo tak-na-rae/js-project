@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
-
 import { Autoplay,Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -9,27 +7,28 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-import "./NewItem.scss";
-import dataFresh from "../data/fresh.js"
-console.log(dataFresh);
+import "./Location.scss";
+import location from "../data/location.js"
+console.log(location);
 
-
-const NewItem = () => {
+const Location = () => {
   return (
     <>
-      <section className="NewItem">
+      <section className="locationItem">
         <div className="layout-fix">
           <div className="heading">
-            <h2>New Item</h2>
-            <p>We save you serious time</p>
+            <h2>Location</h2>
           </div>
-          <ul className="new-list">
+          <ul className="location-list">
               <Swiper className="swiper-fresh"
                   modules={[Autoplay, Navigation, Pagination, Scrollbar, A11y]}
                   loop={true}
+                  loopAdditionalSlides={1} //자연스럽게
+                  speed={4000}
+
                   grabCursor={true}
                   autoplay={{
-                    delay: 2000,
+                    delay: 0,
                     disableOnInteraction: false,
                   }}
                   spaceBetween={20} 
@@ -43,15 +42,14 @@ const NewItem = () => {
                       }
                    }}
                   >
-                    { dataFresh.map((el,idx) => (
+                    { location.map((el,idx) => (
                       <SwiperSlide key={idx}>
                         <div className="image">
-                          <span className="num">{idx + 1}</span>
                           <img src={el.img} alt={el.title}/>
                         </div>
                         <div className="info">
                           <div className="title">{el.title}</div>
-                          <div className="price">{el.price.toLocaleString(1)}원</div> 
+                          <div className="desc">{el.add}</div>
                         </div>
                       </SwiperSlide>
                     )) }
@@ -63,4 +61,4 @@ const NewItem = () => {
   );
 };
 
-export default NewItem;
+export default Location;
