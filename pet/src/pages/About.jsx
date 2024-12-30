@@ -2,9 +2,13 @@ import React from 'react';
 
 const About = () => {
   return (
-    <div>
-      
-    </div>
+    <>
+      <section className="about">
+        <div className="layout-fix">
+          About.jsx
+        </div>
+      </section>
+    </>
   );
 };
 

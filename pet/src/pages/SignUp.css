@@ -1,0 +1,120 @@
+@charset "utf-8";
+
+/*  */
+.displaynone {
+  display: none !important;
+}
+
+.err {
+  color: #db0632;
+}
+.success {
+  color: #007042;
+}
+/*  */
+
+fieldset {
+  border: 0;
+}
+
+.onboarding__join .heading {
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+.onboarding__join .heading .tit {
+  line-height: 1;
+  font-size: 38px;
+  font-weight: 500;
+}
+
+.onboarding__join .heading .sub {
+  margin-top: 12px;
+  font-size: 20px;
+  color: #222;
+}
+.onboarding__join .layout-fix {
+  width: 816px;
+}
+
+.onboarding__join form {
+  padding: 40px 60px;
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+}
+
+.onboarding__join .step {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+.onboarding__join .step li {
+  text-align: center;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.onboarding__join .step .icon {
+  padding: 26px 34px;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+}
+.onboarding__join .step li.active .icon {
+  background-color: #55443a;
+  color: #fff;
+  border-color: #55443a;
+}
+.onboarding__join .step li.active .txt {
+  color: #55443a;
+  font-weight: 600;
+}
+.onboarding__join .step .txt {
+  margin-top: 12px;
+}
+
+.onboarding__join .join-list ~ .join-list {
+  padding-top: 40px;
+  margin-top: 40px;
+  border-top: 1px solid #eee;
+}
+
+.onboarding__join .join-list li + li {
+  margin-top: 24px;
+}
+
+.onboarding__join .join-list .tit {
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  position: relative;
+}
+
+.onboarding__join .join-list .tit.required::after {
+  content: "*";
+  margin-left: 4px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.onboarding__join .join-list input {
+  width: 100%;
+  height: 46px;
+  padding: 0 16px;
+  background-color: #fafafa;
+  font-size: 15px;
+  color: #222;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  outline: none;
+}
+
+.onboarding__join .join-list input:focus {
+  border-color: #55443a;
+}
+.onboarding__join .join-list input + p {
+  margin-top: 4px;
+  font-size: 12px;
+}
