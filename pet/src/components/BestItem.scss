@@ -6,7 +6,7 @@
     display:flex;
     gap:20px;
     @media(max-width:767px){ height:auto; flex-direction:column; }
-    button { padding:8px 12px; margin-top:24px; background-color:#31caae; position:relative; color:#fff; }
+    button { padding:8px 12px; margin-top:24px; background-color:#31caae; position:relative; color:#fff; border-radius:30px; }
     > li {
       width:50%;
       height:100%;

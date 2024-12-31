@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {NavLink, Link} from 'react-router-dom';
 import { RiMenu3Fill } from "react-icons/ri";
 import { MdOutlineClose } from "react-icons/md";
@@ -8,6 +8,21 @@ import { LuDog } from "react-icons/lu";
 
 const Nav = () => {
   const [menuOpen, setMenuOpen]=useState(true);
+  const [isScrolled, setIsScrolled]=useState(true);
+  useEffect(()=>{
+    const handleScroll = ()=>{
+      if(window.scrollY > 50){
+        setIsScrolled(true); //흰배경적용
+      }else{
+        setIsScrolled(false); //흰배경제거
+      }
+    }
+    window.addEventListener("scroll", handleScroll);
+    return ()=>{
+      window.addEventListener("scroll", handleScroll);
+    }
+  },[])
+
   const activeStyle={
     color:'#31caae'
   }
@@ -16,8 +31,17 @@ const Nav = () => {
     // $('.mobile-header-drop').slideToggle(500);
     $('.mobile-header-drop').toggleClass("open");
   }
+
+  const pageTop = () =>{
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    })
+  }
+
   return (
-    <div className='header'>
+    <>
+      <div className={`header ${isScrolled ? "scrolled" : ""}`}>
         <div className="layout-fix">
           <div className="logo">
             {/* <Link to="/"><img src={process.env.PUBLIC_URL + "/img/logo.png"} alt="" /></Link> */}
@@ -66,6 +90,8 @@ const Nav = () => {
           </div>
         </div>
     </div>
+    <div className="quick-top" onClick={pageTop}>top</div>
+    </>
   );
 };
 

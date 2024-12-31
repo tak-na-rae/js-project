@@ -1,0 +1,10 @@
+.onboarding__login{
+  .heading { margin-bottom:40px; text-align:left;
+    .tit { line-height:1; font-size:38px; font-weight:500; }
+    .sub { margin-top:12px; font-size:20px; color:#222; }
+  }
+  .layout-fix { width:816px; }
+  form {
+    padding:40px 60px; position:relative; border-radius:12px; box-shadow:0 6px 16px rgba(0, 0, 0, 0.05);
+  }
+} 

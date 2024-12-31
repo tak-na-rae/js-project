@@ -191,7 +191,6 @@ const SignUp = () => {
         <div className="layout-fix">
           <div className="heading">
             <h2 className="tit">회원가입</h2>
-            <p className="sub">Welcome!</p>
           </div>
           <form action="#" method="post" name="signup" onSubmit={handleSubmit}>
             <fieldset className="sign-area">

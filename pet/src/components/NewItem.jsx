@@ -45,14 +45,16 @@ const NewItem = () => {
                   >
                     { dataFresh.map((el,idx) => (
                       <SwiperSlide key={idx}>
-                        <div className="image">
-                          <span className="num">{idx + 1}</span>
-                          <img src={el.img} alt={el.title}/>
-                        </div>
-                        <div className="info">
-                          <div className="title">{el.title}</div>
-                          <div className="price">{el.price.toLocaleString(1)}원</div> 
-                        </div>
+                        <Link to={`/about/${el.id}`}>
+                          <div className="image">
+                            <span className="num">{idx + 1}</span>
+                            <img src={el.img} alt={el.title}/>
+                          </div>
+                          <div className="info">
+                            <div className="title">{el.title}</div>
+                            <div className="price">{el.price.toLocaleString(1)}원</div> 
+                          </div>
+                        </Link>
                       </SwiperSlide>
                     )) }
                 </Swiper>
