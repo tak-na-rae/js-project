@@ -1,0 +1,43 @@
+[
+  {
+    "id": 1,
+    "imgUrl": "/img/cat01.jpg",
+    "category" : "cat",
+    "desc": "밖을 바라보는 고양이"
+  },{
+    "id": 2,
+    "imgUrl": "/img/dog01.jpg",
+    "category" : "dog",
+    "desc": "풀밭에서 뛰어노는 강아지"
+  },{
+    "id": 3,
+    "imgUrl": "/img/cat02.jpg",
+    "category" : "cat",
+    "desc": "바닥에 앉아 쉬고 있는 고양이"
+  },{
+    "id": 4,
+    "imgUrl": "/img/dog02.jpg",
+    "category" : "dog",
+    "desc": "혀를 내밀며 웃고 있는 행복한 강아지"
+  },{
+    "id": 5,
+    "imgUrl": "/img/cat03.jpg",
+    "category" : "cat",
+    "desc": "눈 마주쳤다 고양이"
+  },{
+    "id": 6,
+    "imgUrl": "/img/dog03.jpg",
+    "category" : "dog",
+    "desc": "소파 위에서 편안하게 잠자는 강아지"
+  },{
+    "id": 7,
+    "imgUrl": "/img/dog04.jpg",
+    "category" : "dog",
+    "desc": "그늘에서 휴식을 취하는 강아지"
+  },{
+    "id": 8,
+    "imgUrl": "/img/dog05.jpg",
+    "category" : "dog",
+    "desc": "풀밭에서 웃고있는 강아지"
+  }
+]
