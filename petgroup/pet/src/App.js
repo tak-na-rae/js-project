@@ -9,6 +9,7 @@ import About from './pages/About';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import UploadPage from "./components/UploadPage";
+import Detail from "./components/Detail.jsx";
 
 
 import data from "./data/fresh.js";
@@ -30,6 +31,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/upload" element={<UploadPage />} />
+          <Route path="/detail/:id" element={<Detail />} />
         </Routes>
         <Footer />
       </div>

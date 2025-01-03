@@ -1,0 +1,10 @@
+.product-detail{
+  .layout-fix { position:relative; }
+  .btn-back { position:absolute; top:0; left:30px; }
+  .prd-info { width:600px; margin:0 auto;
+    .seller { padding:8px 14px 10px; margin-bottom:12px; line-height:1; background-color:#31caae; font-size:13px; color:#fff; display:inline-block; }
+    h2 { font-size:24px; }
+    .price { line-height:2; font-size:18px; }
+    img { width:100%; margin-top:24px; }
+  }
+}
