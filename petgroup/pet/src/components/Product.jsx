@@ -8,15 +8,15 @@ import { LuCat } from "react-icons/lu";
 
 const Product = () => {
   const [products,setProducts] = useState([]);
-  useEffect(()=>{
+  useEffect(() => {
     let url = "http://localhost:8080/products";
     axios.get(url)
-    .then((result)=> {
-      const products = result.data.products;
-      setProducts(products);
-    } )
-    .catch((err)=> console.log(err) )
-  })
+      .then((result) => {
+        const products = result.data.products;
+        setProducts(products);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   const navigate = useNavigate();
 /*   axios.get("http://localhost:3000/products")

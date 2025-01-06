@@ -5,10 +5,40 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const port = 8080;
-app.use(express.json()); //json 데이터 처리 설정
-app.use(cors()); //브라우저 이슈 막기
+app.use(cors());
+// app.use(express.json()); //json 데이터 처리 설정
+// app.use(cors()); //브라우저 이슈 막기
+// const models = require("./models/index");
 
-const models = require("./models/index");
+app.use(express.json());//json형식의 데이터 처리할수 있도록 설정하는 코드
+app.use(cors({
+  origin: ['http://localhost:3000'], //허용하는 출처 목록
+  credentials: true
+})) //브라우저 이슈 막기위한것
+
+
+const models = require('./models');
+const multer= require("multer");
+
+const upload = multer({
+  storage: multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, "upload/");
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.originalname);
+    }
+  })
+});
+
+app.use('/upload', express.static('upload'));
+
+// app.post('/image', upload.single('image'), (req, res)=>{
+//   const file= req.file;
+//   res.send({
+//     imageUrl:file.path
+//   })
+// })
 
 //=== (Product.jsx) 컴포넌트 고정 데이터
 // app.get("/products", (req,res)=>{
@@ -97,6 +127,33 @@ app.get("/detail/:id", (req, res) => {
 //   res.send(`아이디 : ${id}/${eventId}`);
 // } )
 
+
+//회원가입
+app.post('/users', (req, res)=>{
+  const body=req.body;
+  const {user_id, pw, name, phone, email, birth, marketingChecked}=body;
+  if(!user_id || !pw || !name || !phone || !email || !birth || !marketingChecked){
+    res.send('모든 필드를 입력해주세요')
+  }
+  models.User.create({
+    user_id,
+    pw,
+    name,
+    phone,
+    email,
+    birth,
+    marketingChecked
+  }).then((result)=>{
+    console.log('회원가입성공:', result);
+    res.send({result, })
+  }).catch((error)=>{
+    console.error(error)
+    res.status(400).send('회원가입실패')
+  })
+})
+
+
+app.use("/upload", express.static("upload"))
 
 app.listen(port, ()=>{
   console.log("pet server 정상");

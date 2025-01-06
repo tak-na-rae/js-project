@@ -1,10 +1,15 @@
 import React, {useState, useEffect, useRef} from 'react';
 
-import "./SignUp.css";
+import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
+import {API_URL} from '../config/constants';
 
+import "./SignUp.css";
 // import { FaCheck } from "react-icons/fa6";
 
+
 const SignUp = () => {
+  const history = useNavigate();
   const idInputRef= useRef(null)
   const pwInputRef= useRef(null)
   const nameInputRef= useRef(null)
@@ -25,7 +30,9 @@ const SignUp = () => {
   const [privacyChecked, setPrivacyChecked] = useState(false);
   const [marketingChecked, setMarketingChecked] = useState(false);
 
- /*  const [isSubmitted, setIsSubmitted] = useState(false) */
+  const [isSubmitted, setIsSubmitted] = useState(false); //회원가입 제출 여부
+  const [isRegistered, setIsRegistered] = useState(false); //회원가입완료
+
 
   const idRule=/^[a-z0-9]{4,16}$/;
   const pwRule=/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z\d!@#$%^&*]{8,16}$/
@@ -44,21 +51,46 @@ const SignUp = () => {
     birth: {text:'', color: ''},
   })
 
-
-  const handleAllCheck = () =>{
-    setAllChecked(!allChecked)
-    setTermsChecked(!termsChecked)
-    setPrivacyChecked(!privacyChecked)
-    setMarketingChecked(!marketingChecked)
-  }
   useEffect(()=>{
-    if(termsChecked&&privacyChecked&&marketingChecked){
-      setAllChecked(true)
-    }else{
-      setAllChecked(false)
+    if(isSubmitted){
+      if(isRegistered){
+        alert('회원가입이 완료되었습니다.')
+      }else{
+        alert('회원가입이 실패했습니다.')
+      }
     }
+  },[isSubmitted, isRegistered])
 
-  }, [termsChecked, privacyChecked, marketingChecked])
+  // const handleAllCheck = () =>{
+  //   setAllChecked(!allChecked)
+  //   setTermsChecked(!termsChecked)
+  //   setPrivacyChecked(!privacyChecked)
+  //   setMarketingChecked(!marketingChecked)
+  // }
+  // useEffect(()=>{
+  //   if(termsChecked&&privacyChecked&&marketingChecked){
+  //     setAllChecked(true)
+  //   }else{
+  //     setAllChecked(false)
+  //   }
+
+  // }, [termsChecked, privacyChecked, marketingChecked])
+  const handleAllCheck = () => {
+    const newCheckStatus = !allChecked;
+    setAllChecked(newCheckStatus);
+    setTermsChecked(newCheckStatus);
+    setPrivacyChecked(newCheckStatus);
+    setMarketingChecked(newCheckStatus);
+  };
+  
+  useEffect(() => {
+    if (termsChecked && privacyChecked && marketingChecked) {
+      setAllChecked(true);
+    } else {
+      setAllChecked(false);
+    }
+  }, [termsChecked, privacyChecked, marketingChecked]);
+
 
   const handleMessageChange=(key, text, color) =>{
     setMessages((prevMessages) =>({
@@ -165,9 +197,9 @@ const SignUp = () => {
 			setBirth('');
 		}
 	}
+
   const handleSubmit = (event) =>{
     event.preventDefault()
-
     if(
       idRule.test(id) &&
       pwRule.test(pw) &&
@@ -180,10 +212,35 @@ const SignUp = () => {
       privacyChecked &&
       marketingChecked 
     ){
-      console.log('회원가입을 축하합니다.')
-    }else{ console.log('에러')}
+      try{
+        axios.post(`${API_URL}/users`, {
+          user_id: id,
+          pw : pw,
+          name:name,
+          phone:phone,
+          email:email,
+          birth:birth,
+          marketingChecked : marketingChecked ? "True" : "False"
+        }).then((result)=>{
+          console.log('회원가입 성공:', result.data)
+          history("/", {replace:true})
+        }).catch((error)=>{
+          console.error(error)
+        })
+        setIsSubmitted(true);
+        setIsRegistered(true);
+      }catch(error){
+        //db에 회원가입 정보 넣기 실패
+        console.error('에러 상세:', error.response?.data, error.message);
+        setIsRegistered(false);
+        setIsSubmitted(true);
+      }
+    }else{
+      console.log('에러')
+      setIsRegistered(false);
+      setIsSubmitted(true);
+    }
   }
-
 
   return (
     <>
