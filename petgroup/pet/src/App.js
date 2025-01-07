@@ -11,6 +11,7 @@ import SignUp from './pages/SignUp';
 import UploadPage from "./components/UploadPage";
 import Detail from "./components/Detail.jsx";
 
+import { AccessTokenProvider } from './pages/AccessTokenContext.js';
 
 import data from "./data/fresh.js";
 import { createContext, useState } from 'react';
@@ -22,20 +23,22 @@ function App() {
   console.log("pet==", petData);
 
   return (
-    <DataContext.Provider value={{petData}}>
-      <div className="App">
-        <Nav />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about/:id" element={<About />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/upload" element={<UploadPage />} />
-          <Route path="/detail/:id" element={<Detail />} />
-        </Routes>
-        <Footer />
-      </div>
-    </DataContext.Provider>
+    <AccessTokenProvider>
+      <DataContext.Provider value={{ petData }}>
+        <div className="App">
+          <Nav />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about/:id" element={<About />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/upload" element={<UploadPage />} />
+            <Route path="/detail/:id" element={<Detail />} />
+          </Routes>
+          <Footer />
+        </div>
+      </DataContext.Provider>
+    </AccessTokenProvider>
   );
 }
 

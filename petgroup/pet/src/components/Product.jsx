@@ -4,12 +4,15 @@ import "./Product.scss";
 
 import axios from "axios";
 
+import { API_URL } from '../config/constants';
+
 import { LuCat } from "react-icons/lu";
 
 const Product = () => {
   const [products,setProducts] = useState([]);
   useEffect(() => {
-    let url = "http://localhost:8080/products";
+    // let url = "http://localhost:8080/products";
+    let url = `${API_URL}/products`;
     axios.get(url)
       .then((result) => {
         const products = result.data.products;
@@ -37,7 +40,7 @@ const Product = () => {
                     <div className="prd-card">
                       <Link to={`detail/${el.id}`}>
                         <div className="img">
-                          <img src={process.env.PUBLIC_URL + el.imgUrl} alt={el.name}/>
+                          <img src={`${API_URL}/${el.imgUrl}`} alt={el.name}/>
                         </div>
                         <div className="count">
                           <div className="name">{el.name}</div>

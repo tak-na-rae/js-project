@@ -19,7 +19,7 @@ const UploadPage = () => {
       desc:values.desc,
       price:values.price,
       seller:values.seller,
-      imageUrl:imageUrl
+      imgUrl:imageUrl
     }).then((result)=>{
       navigate("/", {replace:true})
     }).catch((err)=>{
@@ -34,7 +34,9 @@ const UploadPage = () => {
     }
     if(info.file.status === "done"){
       const response=info.file.response;
-      const imageUrl=response.imageUrl;
+      const imageUrl=response.imgUrl;
+      // imageUrl = imageUrl.replace(/\\/g, "/");
+      // console.log("변경URL:", imageUrl);  // 변경된 값 확인
       setImageUrl(imageUrl)
     }
   }
@@ -79,7 +81,7 @@ const UploadPage = () => {
             <Divider />
             <Form.Item
             label={<span className='upload-label'>상품명</span>}
-            name="seller" 
+            name="name" 
             rules={[
               {
                 required: true,
@@ -106,7 +108,7 @@ const UploadPage = () => {
             <Divider />
             <Form.Item
             label={<span className='upload-label'>상품설명</span>}
-            name="description" 
+            name="desc" 
             rules={[
               {
                 required: true,

@@ -7,6 +7,11 @@ import App from './App';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
+  // future={{
+  //   v7_relativeSplatPath: true,
+  //   v7_startTransition: true,
+  // }}
+
    <BrowserRouter basename={process.env.PUBLIC_URL}>
      <App />
    </BrowserRouter>

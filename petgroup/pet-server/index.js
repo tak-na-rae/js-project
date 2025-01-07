@@ -5,7 +5,7 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const port = 8080;
-app.use(cors());
+// app.use(cors());
 // app.use(express.json()); //json 데이터 처리 설정
 // app.use(cors()); //브라우저 이슈 막기
 // const models = require("./models/index");
@@ -15,6 +15,7 @@ app.use(cors({
   origin: ['http://localhost:3000'], //허용하는 출처 목록
   credentials: true
 })) //브라우저 이슈 막기위한것
+
 
 
 const models = require('./models');
@@ -31,14 +32,12 @@ const upload = multer({
   })
 });
 
-app.use('/upload', express.static('upload'));
-
-// app.post('/image', upload.single('image'), (req, res)=>{
-//   const file= req.file;
-//   res.send({
-//     imageUrl:file.path
-//   })
-// })
+app.post('/image', upload.single('image'), (req, res)=>{
+  const file= req.file;
+  res.send({
+    imgUrl:file.path
+  })
+})
 
 //=== (Product.jsx) 컴포넌트 고정 데이터
 // app.get("/products", (req,res)=>{
@@ -73,7 +72,7 @@ app.post('/products', (req, res)=> {
   }
 
   models.Product.create({ //per-server > models > product.js(Product)
-    name,price,seller,desc
+    name,imgUrl,price,seller,desc
   })
   .then((result)=>{
     console.log(result)
@@ -87,6 +86,8 @@ app.post('/products', (req, res)=> {
   res.send({body:prdBody});
   // res.send('상품 등록 완료');
 })
+
+app.use("/upload", express.static("upload"));
 
 //=== (Detail.jsx) 컴포넌트 고정 데이터
 // app.get("/detail/:id", (req, res) => {
@@ -128,10 +129,16 @@ app.get("/detail/:id", (req, res) => {
 // } )
 
 
+
+const jwt = require("jsonwebtoken");
+const crypto = require("crypto");
+const seceretKey = crypto.randomBytes(32).toString("hex");
+
+
 //회원가입
 app.post('/users', (req, res)=>{
-  const body=req.body;
-  const {user_id, pw, name, phone, email, birth, marketingChecked}=body;
+  const loginBody = req.body;
+  const {user_id, pw, name, phone, email, birth, marketingChecked} = loginBody;
   if(!user_id || !pw || !name || !phone || !email || !birth || !marketingChecked){
     res.send('모든 필드를 입력해주세요')
   }
@@ -152,8 +159,62 @@ app.post('/users', (req, res)=>{
   })
 })
 
+//로그인
+app.post("/users/login", (req,res)=>{
+  const loginBody = req.body;
+  console.log('loginBody:', loginBody);  // 로그인 요청 본문을 콘솔에 출력합니다.
+  const { user_id, pw } = loginBody; //입력값
+  // const { user_id: inputUserId, pw: inputPassword } = loginBody; // inputUserId로 이름 변경
 
-app.use("/upload", express.static("upload"))
+  models.User.findOne({
+    where: {
+      user_id: user_id, //(좌)DB : (우)입력값
+    }
+  })
+  .then((result)=>{
+    console.log("정보==", result);
+    console.log("아이디==", result.user_id, user_id);
+    console.log("비밀번호==", result.pw, pw);
+    if(result.user_id === user_id && result.pw === pw){
+      console.log("로그인 성공");
+      const user = {
+        id: user_id,
+        username: user_id,
+      }
+      const accessToken = jwt.sign(user, seceretKey, {expiresIn: '1h'});
+      return res.send({
+        user: result.user_id,
+        accessToken: accessToken
+       });
+    } else{
+      console.log("로그인 실패");
+      return res.status(401).send({
+        user: 'False',
+        message: '비밀번호가 틀렸습니다.'
+      }); 
+    }
+  })
+  .catch((err)=>{
+    console.log(err);
+    return res.status(500).send('서버 에러가 발생했습니다.')
+  })
+})
+
+
+app.post("/auth", (req,res)=>{
+  const loginBody = req.body;
+  const { accessToken } = loginBody;
+  if(!accessToken){
+    res.send(false);
+  } else{
+    try{
+      const decoded = jwt.verify(accessToken, seceretKey);
+      if(decoded && decoded.exp > Math.floor(Date.now()/1000)){ //.exp = 만료시간
+        res.send({result:decoded});
+      } else{ console.error("검증실패") }
+    }catch(err){ res.send({result:err}) } //검증실패
+  }
+})
 
 app.listen(port, ()=>{
   console.log("pet server 정상");
