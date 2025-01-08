@@ -37,7 +37,7 @@ const UploadPage = () => {
       const imageUrl=response.imgUrl;
       // imageUrl = imageUrl.replace(/\\/g, "/");
       // console.log("변경URL:", imageUrl);  // 변경된 값 확인
-      setImageUrl(imageUrl)
+      setImageUrl(imageUrl);
     }
   }
 

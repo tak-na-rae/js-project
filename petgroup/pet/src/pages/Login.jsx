@@ -6,7 +6,7 @@ import { Button, Checkbox, Form, Input } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import "./Login.scss";
 
-import { useAccessToken } from './AccessTokenContext';
+import { useAccessToken } from './../pages/AccessTokenContext';
 import { API_URL } from '../config/constants';
 import axios from 'axios';
 

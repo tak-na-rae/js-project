@@ -18,6 +18,7 @@ const SignUp = () => {
   const birthInputRef= useRef(null)
 
   const [id, setId] = useState('') // 아이디
+  const [isIdChecked, setIsIdChecked] = useState(false) // 중복확인
   const [pw, setPw] = useState('') //비밀번호
   const [pw2, setPw2] = useState('') //비밀번호 확인
   const [name, setName] = useState('') //이름
@@ -101,14 +102,38 @@ const SignUp = () => {
   //아이디
   const handleId = (event) => {
     const newValue=event.target.value;
-    setId(newValue)
+    setId(newValue);
+    setIsIdChecked(false)//아이디가 바뀌면 일단 중복확인 초기화
+
     if(idRule.test(newValue)){
-      handleMessageChange('id','사용 가능한 아이디 입니다', 'success-color')
+      handleMessageChange('id','사용 가능한 아이디 입니다', 'success-color');
     }else if(newValue===""){
       handleMessageChange('id','아이디를 입력해 주세요', 'error-color')
     }else{
       handleMessageChange('id','아이디는 영문소문자/숫자 4글자 이상 16글자 미만으로 사용 가능합니다', 'error-color')
       setId('')
+    }
+  }
+  //중복확인
+  const handleIdCheck = async () =>{
+    if(!idRule.test(id)){
+      alert('유효한 아이디를 입력하세요');
+      return;
+    }
+    try{
+      const response= await axios.get(`${API_URL}/users/check-id`, {
+        params:{user_id:id},
+      });
+      if(response.data.success){
+        handleMessageChange('id','사용 가능한 아이디입니다','success-color');
+        setIsIdChecked(true); //중복확인 완료
+      }else{
+        handleMessageChange('id','이미 사용중인 아이디입니다.','error-color');
+        setIsIdChecked(false); 
+      }
+    }catch(error){
+      console.error(error);
+      alert('중복 확인에 실패했습니다. 잠시 후 다시 시도해주세요')
     }
   }
   //패스워드
@@ -199,7 +224,11 @@ const SignUp = () => {
 	}
 
   const handleSubmit = (event) =>{
-    event.preventDefault()
+    event.preventDefault();
+    if(!isIdChecked){
+      alert('아이디 중복확인을 진행해 주세요');
+      return;
+    }
     if(
       idRule.test(id) &&
       pwRule.test(pw) &&
@@ -274,6 +303,7 @@ const SignUp = () => {
                     <p className="tit required">아이디(E-mail)</p>
                     <input placeholder="영문 소문자/숫자 4~16자"
                     ref={idInputRef} type="text" id="idArea" required value={id} onChange={(event) => {setId(event.target.value)}} onBlur={handleId} />
+                    <button type="button" onClick={handleIdCheck} className='id-check-button'>중복확인</button>
                     <p className={`mes-style ${messages.id.color}`}>{messages.id.text}</p>
                   </div>
                 </li>
