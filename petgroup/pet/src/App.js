@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import UploadPage from "./components/UploadPage";
 import Detail from "./components/Detail.jsx";
+import CommentLIst from './components/CommentLIst.jsx';
 
 import { AccessTokenProvider } from './pages/AccessTokenContext.js';
 

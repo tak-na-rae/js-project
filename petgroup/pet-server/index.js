@@ -52,7 +52,7 @@ app.post('/image', upload.single('image'), (req, res) => {
 //   })
 // } )
 
-//=== (Product.jsx) 컴포넌트 SQL 연결
+//===== (Product.jsx) 컴포넌트 SQL 연결
 app.get('/products', (req, res) => {
   models.Product.findAll()
     .then((result) => {
@@ -102,7 +102,7 @@ app.use("/upload", express.static("upload"));
 //   res.send(product);
 // });
 
-//=== (Detail.jsx) 컴포넌트 SQL 연결
+//===== (Detail.jsx) 컴포넌트 SQL 연결
 app.get("/detail/:id", (req, res) => {
   const { id } = req.params;
   models.Product.findOne({
@@ -132,10 +132,11 @@ app.get("/detail/:id", (req, res) => {
 
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
-const seceretKey = crypto.randomBytes(32).toString("hex");
+// const secretKey = crypto.randomBytes(32).toString("hex");
+const secretKey = "dkfjoewkfnldksa11";
 
 
-//회원가입
+//=====회원가입
 app.post('/users', async (req, res) => {
   const loginBody = req.body;
   const { user_id, pw, name, phone, email, birth, marketingChecked } = loginBody;
@@ -179,7 +180,7 @@ app.post('/users', async (req, res) => {
   // })
 })
 
-//로그인
+//=====로그인
 app.post("/users/login", (req, res) => {
   const loginBody = req.body;
   console.log('loginBody:', loginBody);  // 로그인 요청 본문을 콘솔에 출력합니다.
@@ -221,7 +222,7 @@ app.post("/users/login", (req, res) => {
         id: user_id,
         username: user_id,
       }
-      const accessToken = jwt.sign(user, seceretKey, {expiresIn: '1h'});
+      const accessToken = jwt.sign(user, secretKey, {expiresIn: '1h'});
       return res.send({
         user: result.user_id,
         accessToken: accessToken
@@ -249,7 +250,7 @@ app.post("/auth", (req, res) => {
     return res.send({ result: false });  // accessToken이 없으면 false 반환
   } else {
     try {
-      const decoded = jwt.verify(accessToken, seceretKey);
+      const decoded = jwt.verify(accessToken, secretKey);
       if (decoded && decoded.exp > Math.floor(Date.now() / 1000)) { //.exp = 만료시간
         console.log("Token is valid:", decoded);
         return res.send({ result: decoded });
@@ -264,7 +265,7 @@ app.post("/auth", (req, res) => {
   }
 })
 
-//중복확인
+//=====중복확인
 app.get('/users/check-id', (req, res) => {
   const { user_id } = req.query;
   if (!user_id) {
@@ -285,6 +286,40 @@ app.get('/users/check-id', (req, res) => {
   })
 })
 
+
+//=====댓글생성
+app.post('/comment', (req, res) => {
+  const { post_id, content } = req.body;
+
+  models.Comment.create({ post_id,content })
+  .then((result)=>{
+    return res.status(201).json({ message:'성공', comment:result });
+    // return res.send( {result,} ) //뒤에 내용이 들어올 수 있을때는 "," 비워둠
+  })
+  .catch((err)=>{
+    console.log(err);
+    return res.status(500).json({ message: '서버 오류 발생' });
+  })
+})
+
+//댓글 전체 가져오기
+app.get('/comment', (req, res)=>{
+  models.Comment.findAll()
+  .then((result)=>{
+    console.log("Comment :", result);
+    res.send({
+      comments: result
+    })
+  })
+  .catch((error)=>{
+    console.error(error)
+    res.send("에러발생")
+  })
+})
+
+
+
+//=====
 app.listen(port, () => {
   console.log("pet server 정상");
   models.sequelize

@@ -1,12 +1,14 @@
 import React, { useState,useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { LuCat } from "react-icons/lu";
+
 import "./Product.scss";
 
 import axios from "axios";
 
 import { API_URL } from '../config/constants';
 
-import { LuCat } from "react-icons/lu";
+import CommentLIst from './CommentLIst';
 
 const Product = () => {
   const [products,setProducts] = useState([]);
@@ -33,7 +35,8 @@ const Product = () => {
           <div className="heading">
             <h2>Product Upload</h2>
             <button className="btn-upload" onClick={()=> navigate('/upload') }>업로드하기</button>
-            <ul className="prd-list">
+          </div>
+          <ul className="prd-list">
               {
                 products.map((el)=> (
                   <li key={el.id}>
@@ -53,7 +56,7 @@ const Product = () => {
                 ) )
               }
             </ul>
-          </div>
+          <CommentLIst/>
         </div>
       </section>
     </>
