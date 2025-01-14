@@ -29,6 +29,16 @@ const RecipeDetail = () => {
       .catch((err)=>{ console.log(err); })
     },[id]);
 
+
+
+    const [clickImg, setClickImg] = useState("");
+    useEffect(()=>{
+      setClickImg(menu.ATT_FILE_NO_MK);
+    },[menu])
+    const handleImg = (url)=>{
+      setClickImg(url);
+    }
+
   return (
     <>
       <div className="p-detail">
@@ -37,14 +47,17 @@ const RecipeDetail = () => {
             <>
               <div className="info">
                 <div className="thumb-group">
-                  <img src={menu.ATT_FILE_NO_MK} alt={menu.RCP_NM}/>
+                  {/* <img src={menu.ATT_FILE_NO_MK} alt={menu.RCP_NM}/> */}
+                  <img src={clickImg} alt={menu.RCP_NM}/>
                   <ul className="thumb-list">
                     {Object.keys(menu)
                       .filter((key)=> key.startsWith("MANUAL_IMG") && menu[key])
                       .sort((a, b) => parseInt(a.slice(-2)) - parseInt(b.slice(-2))) // (-2는 문자열에서 마지막 두 자리를 기준으로 정렬)
-                      .map((key,idx)=> ( <li key={idx}><img src={menu[key]} alt=""/></li> ))
+                      .map((key,idx)=> ( <li key={idx}><img src={menu[key]} alt={menu.RCP_NM} onClick={()=>handleImg(menu[key])}/></li> ))
                     }
+                    <li><img src={menu.ATT_FILE_NO_MK} alt={menu.RCP_NM} onClick={()=> handleImg(menu.ATT_FILE_NO_MK) }/></li>
                   </ul>
+                  <span className="help">* 대표사진 외 이미지들은 선명하지 않을 수 있으니 양해 부탁드립니다.</span>
                 </div>
                 <div className="txt">
                   <span className="badge">{menu.RCP_PAT2}</span>
