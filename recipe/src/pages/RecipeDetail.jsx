@@ -43,7 +43,7 @@ const RecipeDetail = () => {
     <>
       <div className="p-detail">
         <div className="layout-fix">
-          { loading ? (<div className="loading">로딩중</div>) : (
+          { loading ? (<div className="loading"><div className="spinner"></div><h2>데이터 로딩중!</h2></div>) : (
             <>
               <div className="info">
                 <div className="thumb-group">

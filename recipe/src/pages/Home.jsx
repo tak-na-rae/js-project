@@ -22,7 +22,7 @@ const Home = () => {
       setSwiperReady(true);
     }
   }, [data]);
-  if (!swiperReady || loading) return <div className="loading">로딩중</div>;
+  if (!swiperReady || loading) return <div className="loading"><div className="spinner"></div><h2>데이터 로딩중!</h2></div>;
 
 
   return (
@@ -58,7 +58,7 @@ const Home = () => {
         <div className="recipe-cont">
           <div className="layout-fix">
             { loading ? (
-              <div className="loading">로딩중</div>
+              <div className="loading"><div className="spinner"></div><h2>데이터 로딩중!</h2></div>
             ) : (
               <>
                 <h2 className="heading-tit">조리식품의 레시피</h2>

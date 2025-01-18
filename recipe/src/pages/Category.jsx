@@ -8,7 +8,7 @@ const Category = () => {
   const { data,loading } = useContext(DataContext);
   const { category } = useParams();
   
-  if(loading) <h2 className="loading">데이터 로딩중..</h2>;
+  if(loading) <div className="loading"><div className="spinner"></div><h2>데이터 로딩중!</h2></div>;
   const filterData = data.filter((item) => item.RCP_PAT2 === category);
 
   return (
